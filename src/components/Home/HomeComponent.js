@@ -1,22 +1,38 @@
 import React, { useReducer } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import cityData from '../../assets/city-data/cities-fr.json';
-import DropDown from '../ReusableComponnets/DropDown';
+import DropDown from '../ReusableComponents/DropDown';
 import '../../assets/css/App.css';
+import axios from 'axios';
 
 function reducer(state, action) {
-    console.log("state,action ===>", state, action);
+    //console.log("state,action ===>", state, action);
+    switch(action.type){
+        case 'getWeatherForCity':
+            const newState = Object.assign({},{...state});
+            newState.selectedCityId = action.payload;
+            return newState;
+
+    }
 }
 
 const initialState = {
+    selectedCityId: null,
+    selectedCityWeather: {},
+    selectedCityForCastedWeather:[]
 }
 
 const HomeComponent = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    console.log("City Data ===>", cityData);
+    console.log("State ===>", state);
 
-    const handleSelect = (evt, evtKey) => {
-        console.log("On Select DropDown Call Back ===>", evt, evtKey);
+    const handleSelect = (evtKey, evt) => {
+        //console.log("On Select DropDown Call Back ===>", evt, evtKey);
+        //dispatch({type: "getWeatherForCity", payload: evtKey });
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${evtKey}&appid=0f749ac9b1f41465cd227bfe73b9a224`;
+        axios.get(url).then((response)=>{
+            console.log("786 API call response ===>",response.data.weather);
+        }).catch();
     }
 
     return (
