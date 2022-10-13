@@ -10,6 +10,9 @@
 ```
 
 ### APIs Consumed
+```
+http://api.openweathermap.org/
+```
 
 
 ## License
