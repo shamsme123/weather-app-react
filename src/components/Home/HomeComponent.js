@@ -8,6 +8,7 @@ import Loader from '../ReusableComponents/Loader';
 import Spinner from 'react-bootstrap/Spinner';
 import {reducer} from "./AppReducer/AppReducer";
 import {initialState} from "./initialState/initialState";
+import {APP_CONSTANTS} from "../../Constants/AppConstants";
 
 
 const HomeComponent = () => {
@@ -17,7 +18,7 @@ const HomeComponent = () => {
     const handleSelect = (evtKey, evt) => {
         //console.log("On Select DropDown Call Back ===>", evt, evtKey);
         //dispatch({type: "GET_WEATHER_FOR_CITY", payload: evtKey });
-        const url = `https://api.openweathermap.org/data/2.5/weather?id=${evtKey}&appid=0f749ac9b1f41465cd227bfe73b9a224`;
+        const url = `${APP_CONSTANTS.apiURLCity}?id=${evtKey}&appid=${APP_CONSTANTS.keyow}`;
         axios.get(url).then((response)=>{
             console.log("786 API call response ===>",response.data.weather);
         }).catch();
