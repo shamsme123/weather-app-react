@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
+import Loader from './Loader';
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+const CustomToggle = React.forwardRef(({ children, showHideLoader, onClick }, ref) => (
   <a
     href=""
     ref={ref}
     onClick={(e) => {
+      console.log("786 Here Clicked...");
+      showHideLoader(true);
       e.preventDefault();
       onClick(e);
     }}
@@ -21,9 +24,8 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
 const CustomMenu = React.forwardRef(
-  ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+  ({ children, style, className, setShowLoader, dropDownItemList, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
-
     return (
       <div
         ref={ref}
@@ -33,7 +35,6 @@ const CustomMenu = React.forwardRef(
       >
         <Form.Control
           autoFocus
-          className="mx-3 my-2 w-auto"
           placeholder="Type to filter..."
           onChange={(e) => setValue(e.target.value)}
           value={value}
@@ -49,21 +50,25 @@ const CustomMenu = React.forwardRef(
   },
 );
 
-const DropDown = ({onSelectCallBack, dropDownItemList}) => {
+const DropDown = ({onSelectCallBack, dropDownItemList, showHideLoader}) => {
+    
+  useEffect(()=>{
+    console.count("Drop Down Loaded");
+  });
+
     return (
-        <Dropdown onSelect={onSelectCallBack}>
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-            Custom toggle
-            </Dropdown.Toggle>
-        
-            <Dropdown.Menu as={CustomMenu}>
-                {
-                    dropDownItemList.map((item)=>(
-                        <Dropdown.Item eventKey={item.id} key={item.id}>{item.nm}</Dropdown.Item>
-                    ))
-                }
-            </Dropdown.Menu>
-        </Dropdown>
+      <React.Fragment>
+          <Dropdown onSelect={onSelectCallBack}  show="true">
+          
+              <Dropdown.Menu as={CustomMenu} dropDownItemList={dropDownItemList}>
+                  {
+                      dropDownItemList.map((item)=>(
+                          <Dropdown.Item eventKey={item.id} key={item.id}>{item.nm}</Dropdown.Item>
+                      ))
+                  }
+              </Dropdown.Menu>
+          </Dropdown>
+        </React.Fragment>
     );
 };
 
