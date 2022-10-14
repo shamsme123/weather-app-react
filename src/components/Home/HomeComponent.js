@@ -22,7 +22,7 @@ const HomeComponent = () => {
 
     const handleSelect = (evtKey, evt) => {
         showHideLoader(true);
-        const url = `${APP_CONSTANTS.apiURLCity}?id=${evtKey}&appid=${APP_CONSTANTS.keyow}`;
+        const url = `${APP_CONSTANTS.apiURLCity}?id=${evtKey}&appid=${APP_CONSTANTS.keyow}&units=metric`;
         axios.get(url).then((response)=>{
             console.log("786 API call response ===>",response);
             dispatch({type: "SET_SELECTED_CITY_WEATHER",payload: response});
@@ -63,6 +63,7 @@ const HomeComponent = () => {
                         <Card.Body>
                             {appState.selectedCityName}
                             <ReturnWeatherIcon iconid={appState.selectedCityWeather[0].icon}/>
+                            {appState.selectedCityTemperature}&nbsp; &#8451;
                             {appState.showLoader ? <Loader/> : null}
                         </Card.Body>
                     </Card>

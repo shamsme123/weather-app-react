@@ -9,7 +9,9 @@ export function reducer(state, action) {
             return {
                 ...state,
                 selectedCityName: action.payload.data.name,
-                selectedCityWeather: action.payload.data.weather
+                selectedCityWeather: action.payload.data.weather,
+                selectedCityTemperature: action.payload.data.main.temp
+
             }    
         case "SHOW_HIDE_LOADER":
             return {
