@@ -30,6 +30,13 @@ const HomeComponent = () => {
         }).catch();
     }
 
+    const ReturnWeatherIcon = ({iconid}) => {
+        const wi = `http://openweathermap.org/img/wn/${iconid}@2x.png`
+        return (
+            <img src={wi}/>
+        )
+    }
+
     return (
         <Container fluid className='home'>
             786 Allah is great
@@ -50,17 +57,17 @@ const HomeComponent = () => {
                     {appState.showLoader ? <Loader/>: null}
                 </Col> */}
             </Row>
-            <Row className='my-5'>
+            {appState.selectedCityName && <Row className='my-5'>
                 <Col xs="12" sm="12" md="12">
                     <Card style={{minHeight: "20rem"}}>
                         <Card.Body>
                             {appState.selectedCityName}
-                            
+                            <ReturnWeatherIcon iconid={appState.selectedCityWeather[0].icon}/>
                             {appState.showLoader ? <Loader/> : null}
                         </Card.Body>
                     </Card>
                 </Col>
-            </Row>
+            </Row>}
         </Container>
 
     );
