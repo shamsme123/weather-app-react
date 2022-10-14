@@ -1,6 +1,6 @@
 .home div.dropdown-menu{
     height: auto;
-    max-height: 25rem;
+    max-height: 15rem;
     overflow-y: scroll;
     width:100%;
 }
@@ -16,9 +16,10 @@
 }
 
 .lds-dual-ring {
-    display: inline-block;
+    display: block;
     width: 80px;
     height: 80px;
+    margin:0 auto;
   }
   .lds-dual-ring:after {
     content: " ";

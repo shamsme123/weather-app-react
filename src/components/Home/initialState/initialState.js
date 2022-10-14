@@ -1,6 +1,7 @@
 export const initialState = {
     selectedCityId: null,
-    selectedCityWeather: {},
+    selectedCityName: null,
+    selectedCityWeather: null,
     showLoader: false,
     selectedCityForCastedWeather:[]
 }
