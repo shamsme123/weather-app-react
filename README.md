@@ -7,10 +7,12 @@
 * run the following commands
 
 ```
+    mkdir <folder name>
+    cd <folder name>
     git clone https://github.com/shamsme123/weather-app-react.git
     cd weather-app-react
     npm install
-    npm start
+    npm run start
 ```
 
 ### Tech Stack this built with
