@@ -16,7 +16,7 @@
     * Webpack - 5+
     * Axios - 1.1.0+
 
-### API(s_ Consumed
+### API(s) Consumed
 ```
 http://api.openweathermap.org/
 https://api.openweathermap.org/data/2.5/Weather/id={cityid}
