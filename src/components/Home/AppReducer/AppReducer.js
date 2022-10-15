@@ -18,6 +18,11 @@ export function reducer(state, action) {
                 ...state,
                 showLoader: action.payload
             }
+        case "SET_SELECTED_CITY_FORECASTED_WEATHER":
+            return {
+                ...state,
+                selectedCityForCastedWeather: action.payload
+            }
         default:
             return state; 
     }

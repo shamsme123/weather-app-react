@@ -8,13 +8,13 @@ import {reducer} from "./AppReducer/AppReducer";
 import {initialState} from "./initialState/initialState";
 import {APP_CONSTANTS} from "../../Constants/AppConstants";
 import '../../assets/css/App.css';
-import {get3DaysForecast} from '../../utility/utility';
+import {get3DaysForecast,getDayName} from '../../utility/utility';
 
 
 
 const HomeComponent = () => {
     const [appState, dispatch] = useReducer(reducer, initialState);
-    console.log("render ===>", appState);
+    //console.log("render ===>", appState);
 
     const showHideLoader = (showHide) => {
         dispatch({type: "SHOW_HIDE_LOADER",payload: showHide});
@@ -29,14 +29,19 @@ const HomeComponent = () => {
         }).then((response)=>{
             const url = `${APP_CONSTANTS.apiURLForeCast}?id=${evtKey}&appid=${APP_CONSTANTS.keyow}&units=metric`;
             axios.get(url).then((response)=>{
-                console.log("786 API call response forecast ===>",response.data.list);
-
-                //dispatch({type: "SET_SELECTED_CITY_WEATHER",payload: response});
+                // //console.log("786 API call response forecast ===>",response.data.list);
                 const threeDayFoecast = get3DaysForecast(response.data.list);
-                console.log("786 API call response forecast 3days ===>",threeDayFoecast);
+                // //console.log("786 API call response forecast 3days ===>",threeDayFoecast);
+                dispatch({type: "SET_SELECTED_CITY_FORECASTED_WEATHER",payload: threeDayFoecast});
                 showHideLoader(false);
-            })
-        }).catch();
+            }).catch(()=>{
+                showHideLoader(false);
+                alert("Error in fetching forcast data , Check the API Call or Internet Connection!!!!");
+            });
+        }).catch(()=>{
+            showHideLoader(false);
+            alert("Error in fetching city current weather data, Check the API Call or Internet Connection!!!!");
+        });
     }
 
     const ReturnWeatherIcon = ({iconid}) => {
@@ -70,6 +75,7 @@ const HomeComponent = () => {
                     <Card style={{minHeight: "20rem"}}>
                         {appState.showLoader ? <Loader/> : null}
                         {appState.selectedCityName ? <Card.Body>
+                            <h6 className='pb-5 mb-10'>* Weather today and Forecast for the next 3 days</h6>
                             <Row>
                                 <Col className='text-center'>
                                     <h5 className='label-headings'>City</h5>
@@ -87,10 +93,17 @@ const HomeComponent = () => {
                                     {appState.selectedCityTemperature}&nbsp; &#8451;
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col className='text-center'></Col>
-                                <Col className='text-center'></Col>
-                                <Col className='text-center'></Col>
+                            <hr/>
+                            <Row className='mt-5'>
+                                {appState.selectedCityForCastedWeather.map((item)=>(
+                                    <Col className='text-center' key={item.dt}>
+                                        {getDayName(item.dt_txt.toString(),'en-US')}
+                                        <br/>
+                                        <ReturnWeatherIcon iconid={item.weather[0].icon}/>
+                                        <br/>
+                                        {item.weather[0].main} - {item.weather[0].description}
+                                    </Col>
+                                ))}
                             </Row>
                         </Card.Body>: <Row><Col><div className='p-5 label-headings'>No City Selected, City Weather Will Load Here...</div></Col></Row>}
                     </Card>
