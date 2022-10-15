@@ -1,4 +1,4 @@
-# Weather App in React
+# Weather App in React, React Hooks & Axios
 
 ## Installation Guide
 
