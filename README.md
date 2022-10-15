@@ -4,6 +4,7 @@
 
 * Install Node
 * Install npm
+* Install Git
 * run the following commands
 
 ```
