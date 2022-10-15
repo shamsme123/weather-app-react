@@ -31,7 +31,7 @@ const HomeComponent = () => {
             axios.get(url).then((response)=>{
                 // //console.log("786 API call response forecast ===>",response.data.list);
                 const threeDayFoecast = get3DaysForecast(response.data.list);
-                // //console.log("786 API call response forecast 3days ===>",threeDayFoecast);
+                console.log("786 API call response forecast 3days ===>",threeDayFoecast);
                 dispatch({type: "SET_SELECTED_CITY_FORECASTED_WEATHER",payload: threeDayFoecast});
                 showHideLoader(false);
             }).catch(()=>{
@@ -90,7 +90,7 @@ const HomeComponent = () => {
                                 </Col>
                                 <Col className='text-center'>
                                     <h5 className='label-headings'>Temperature</h5>
-                                    {appState.selectedCityTemperature}&nbsp; &#8451;
+                                    {appState.selectedCityTemperature}&nbsp;&#8451;
                                 </Col>
                             </Row>
                             <hr/>
@@ -102,6 +102,8 @@ const HomeComponent = () => {
                                         <ReturnWeatherIcon iconid={item.weather[0].icon}/>
                                         <br/>
                                         {item.weather[0].main} - {item.weather[0].description}
+                                        <br/>
+                                        {item.main.temp}&nbsp;&#8451;
                                     </Col>
                                 ))}
                             </Row>
