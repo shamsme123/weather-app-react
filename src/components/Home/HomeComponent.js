@@ -53,8 +53,8 @@ const HomeComponent = () => {
 
     return (
         <Container fluid className='home'>
-            786 Allah is great
-            <Row>
+            <div style={{display:'none'}}>786 - for Testing</div>
+            <Row className='mt-3'>
                 <Col xs="12" sm="12" md="12">
                     <Card style={{minHeight: "20rem"}}>
                         <Card.Body>
