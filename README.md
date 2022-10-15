@@ -16,7 +16,7 @@
     npm run start
 ```
 
-### Tech Stack this application is built with
+### Built with
 
     * React - 17+
     * React-hooks (useReducer)
