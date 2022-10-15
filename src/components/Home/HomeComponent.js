@@ -75,7 +75,8 @@ const HomeComponent = () => {
                     <Card style={{minHeight: "20rem"}}>
                         {appState.showLoader ? <Loader/> : null}
                         {appState.selectedCityName ? <Card.Body>
-                            <h6 className='pb-5 mb-10'>* Weather today and Forecast for the next 3 days</h6>
+                            <h6 className='pb-1 small'>* Current and Forecasted Weather for the next 3 days</h6>
+                            <h6 className='pb-3 mb-5 small'>* Forecasts are only for the first 3 hours of the day</h6>
                             <Row>
                                 <Col className='text-center'>
                                     <h5 className='label-headings'>City</h5>
