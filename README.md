@@ -2,6 +2,10 @@
 
 ## Installation Guide
 
+* Install Node
+* Install npm
+* run the following commands
+
 ```
     git clone https://github.com/shamsme123/weather-app-react.git
     cd weather-app-react
