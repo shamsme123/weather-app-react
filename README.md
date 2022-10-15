@@ -13,6 +13,8 @@
 
     * React - 17+
     * React-hooks (useReducer)
+    * BootStrap - 4+
+    * react-bootstrap (Form,Dropdown) - 2.5+
     * Webpack - 5+
     * Axios - 1.1.0+
 
