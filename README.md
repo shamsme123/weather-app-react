@@ -30,7 +30,8 @@ Current Weather & Forecast
 ### License
 [MIT](https://choosealicense.com/licenses/mit/)
 
+
 ### Author
-Shams Mahboob Islam  |  
-<a href="https://in.linkedin.com/in/shams-mahboob-islam-98a3b4a8">LinkedIn</a>  |  
+Shams Mahboob Islam
+<a href="https://in.linkedin.com/in/shams-mahboob-islam-98a3b4a8">LinkedIn</a>
 Email: shamsme2022@gmail.com
