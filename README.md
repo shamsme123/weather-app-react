@@ -1,4 +1,4 @@
-# Weather App in React, React Hooks & Axios
+# Weather App in React, React Hooks, Axios & webpack
 
 ## Installation Guide
 
@@ -12,7 +12,7 @@
 ### Tech Stack this built with
 
     * React - 17+
-    * React Hooks
+    * React-hooks (useReducer)
     * Webpack - 5+
     * Axios - 1.1.0+
 
