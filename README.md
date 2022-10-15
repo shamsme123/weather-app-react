@@ -9,14 +9,14 @@
     npm start
 ```
 
-### Tech Stack
+### Tech Stack this built with
 
     * React - 17+
     * React Hooks
     * Webpack - 5+
     * Axios - 1.1.0+
 
-### APIs Consumed
+### API(s_ Consumed
 ```
 http://api.openweathermap.org/
 https://api.openweathermap.org/data/2.5/Weather/id={cityid}
