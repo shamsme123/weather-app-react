@@ -35,7 +35,7 @@ const CustomMenu = React.forwardRef(
       >
         <Form.Control
           autoFocus
-          placeholder="Type to filter..."
+          placeholder="Type to filter cities..."
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />

@@ -1,12 +1,27 @@
+body{
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  color: #9575CD !important;
+}
+
+.label-headings{
+  color: #EC6E4C !important;
+}
+
 .home div.dropdown-menu{
     height: auto;
-    max-height: 15rem;
+    max-height: 14rem;
     overflow-y: scroll;
     width:100%;
+    border: none !important;
+    color: #9575CD !important;
+}
+
+.home div.dropdown-menu ul a{
+  color: #9575cda6 !important;
 }
 
 .home div.dropdown-menu.show {
-  padding:2rem;
+  padding:1rem;
 }
 
 .home div.dropdown-menu.show > input{
